@@ -1,0 +1,212 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    overflow: hidden; /* Evita rolagem */
+    background: linear-gradient(#ff758c, #ff7eb3); /* Fundo gradiente */
+    position: relative; /* Para o posicionamento dos corações */
+  }
+  
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    
+  }
+  
+  .hearts {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4d6d;
+    clip-path: polygon(50% 0%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
+    animation: float 8s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) scale(1); /* Inicia fora da tela */
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20vh) scale(0.5); /* Sai da tela no topo */
+      opacity: 0;
+    }
+  }
+  
+  
+  .hearts:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .hearts:nth-child(2) { left: 30%; animation-delay: 2s; }
+  .hearts:nth-child(3) { left: 50%; animation-delay: 4s; }
+  .hearts:nth-child(4) { left: 70%; animation-delay: 6s; }
+  .hearts:nth-child(5) { left: 90%; animation-delay: 8s; }
+  
+  .container {
+    z-index: 1; /* Trazer o conteúdo acima do fundo */
+    display: flex;
+    flex-direction: column; /* Organizar o conteúdo em coluna */
+    align-items: center; /* Centralizar horizontalmente */
+    justify-content: center; /* Centralizar verticalmente */
+    text-align: center; /* Garantir alinhamento centralizado */
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    margin: 10px 0;
+  }
+  
+  .gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  
+  .gallery img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+  }
+  
+  .gallery img:hover {
+    transform: scale(1.1);
+  }
+  
+  .counter {
+    font-size: 1.5em;
+  }
+  .video-section {
+    margin-top: 30px;
+  }
+  
+  .video-container {
+    display: none;
+    margin-top: 20px;
+  }
+  
+  #specialVideo {
+    max-width: 100%; /* Ajustar o vídeo ao tamanho do contêiner */
+    height: auto; /* Manter a proporção */
+  }
+  #playVideoBtn {
+    background-color: #ff4d6d; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-size: 1.2em; /* Tamanho da fonte */
+    padding: 15px 30px; /* Espaçamento interno */
+    border: none; /* Remove borda */
+    border-radius: 25px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mão */
+    transition: background-color 0.3s, transform 0.3s; /* Animação suave */
+  }
+  
+  #playVideoBtn:hover {
+    background-color: #ff1f47; /* Cor mais intensa ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o botão */
+  }
+  
+  #playVideoBtn:focus {
+    outline: none; /* Remove o contorno ao clicar */
+  }
+  /* Estilos do modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 100; /* Acima do conteúdo principal */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro */
+    overflow: auto; /* Permitir rolagem, se necessário */
+  }
+  
+  .modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%; /* Limitar o tamanho da imagem */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease; /* Suavizar ao redimensionar */
+  }
+  
+  .modal-content:hover {
+    transform: scale(1.02); /* Pequeno zoom ao passar o mouse */
+  }
+  
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .close:hover {
+    color: #ff4d6d;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .modal-content {
+      max-width: 90%; /* Aumentar proporção em tablets */
+      max-height: 70%; /* Reduzir altura para evitar corte */
+    }
+  
+    .close {
+      font-size: 30px; /* Reduzir o tamanho do botão "X" */
+      top: 10px;
+      right: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal-content {
+      max-width: 95%; /* Ocupa quase toda a largura em smartphones */
+      max-height: 60%; /* Reduzir ainda mais a altura */
+    }
+  
+    .close {
+      font-size: 25px; /* Botão "X" menor */
+      top: 5px;
+      right: 10px;
+    }
+    #specialVideo {
+        max-width: 80%; /* Reduz ainda mais o tamanho */
+        height: auto;
+    }
+  }
+  
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .gallery img { width: 100px; height: 100px; }
+    #playVideoBtn { font-size: 1em; padding: 12px 25px; }
+    #specialVideo {
+        max-width: 80%; /* Reduz ainda mais o tamanho */
+        height: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 { font-size: 2em; }
+    .gallery img { width: 80px; height: 80px; }
+    #playVideoBtn { font-size: 0.9em; padding: 10px 20px; }
+    #specialVideo {
+        max-width: 80%; /* Reduz ainda mais o tamanho */
+        height: auto;
+    }
+  }
+  
